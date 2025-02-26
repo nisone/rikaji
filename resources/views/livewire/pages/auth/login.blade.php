@@ -20,12 +20,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        if(Auth::guard('web')->check()){
             $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
-        }elseif(Auth::guard('admin')->check()){
-            $this->redirectIntended(default: route('welcome', absolute: false), navigate: true);
-
-        }
 
     }
 }; ?>
