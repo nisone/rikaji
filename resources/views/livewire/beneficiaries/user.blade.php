@@ -25,6 +25,7 @@ new #[Layout('layouts.app')] class extends Component
     <div>{{ $user->phone_number}}</div>
     <div>{{ $user->address}}</div>
     <div>{{ $user->support_need}}</div>
+    <div>{{ $user->need_status}}</div>
 
 </div>
 </div>

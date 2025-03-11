@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\BeneficiaryNeedStatusEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,9 +20,10 @@ class BeneficiaryFactory extends Factory
         return [
             'user_id' => 1,
             'name' => fake()->name('male'),
-            'address' => fake()->paragraph(),
+            'address' => fake()->address(),
             'phone_number' => fake()->phonenumber(),
-            'support_need' => fake()->paragraph()
+            'support_need' => fake()->paragraph(),
+            'need_status' => BeneficiaryNeedStatusEnum::Pending->value
         ];
     }
 }

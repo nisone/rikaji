@@ -17,6 +17,7 @@ class Beneficiary extends Model
         'address',
         'phone_number',
         'support_need',
+        'need_status'
     ];
  /**
   * Get the user that owns the Beneficiary
