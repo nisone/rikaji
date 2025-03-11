@@ -17,7 +17,11 @@ class BeneficiaryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => 1,
+            'name' => fake()->name('male'),
+            'address' => fake()->paragraph(),
+            'phone_number' => fake()->phonenumber(),
+            'support_need' => fake()->paragraph()
         ];
     }
 }

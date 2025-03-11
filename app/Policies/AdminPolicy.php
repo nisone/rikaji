@@ -2,65 +2,64 @@
 
 namespace App\Policies;
 
-use App\Models\User;
-use App\Models\admin;
+use App\Models\Admin;
 use Illuminate\Auth\Access\Response;
 
 class AdminPolicy
 {
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the ( can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(Admin $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, admin $admin): bool
+    public function view(Admin $user, admin $admin): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(Admin $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, admin $admin): bool
+    public function update(Admin $user, admin $admin): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, admin $admin): bool
+    public function delete(Admin $user, admin $admin): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, admin $admin): bool
+    public function restore(Admin $user, admin $admin): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, admin $admin): bool
+    public function forceDelete(Admin $user, admin $admin): bool
     {
-        return false;
+        return true;
     }
 }

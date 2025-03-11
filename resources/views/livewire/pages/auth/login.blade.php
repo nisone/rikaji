@@ -14,13 +14,22 @@ new #[Layout('layouts.guest')] class extends Component
      */
     public function login(): void
     {
+        Auth::guard('web')->logout();
+        Auth::guard('admin')->logout();
+        Session::invalidate();
+        Session::regenerateToken();
         $this->validate();
 
         $this->form->authenticate();
 
         Session::regenerate();
 
+        if(Auth::guard('admin')->check()){
+             $this->redirect(route('filament.admin.pages.dashboard', absolute:false));
+        }else{
+
             $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        }
 
     }
 }; ?>

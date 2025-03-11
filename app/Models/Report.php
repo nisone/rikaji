@@ -10,6 +10,12 @@ class Report extends Model
 {
     /** @use HasFactory<\Database\Factories\ReportFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'title',
+        'description',
+    ];
     /**
      * Get the user that owns the Report
      *
