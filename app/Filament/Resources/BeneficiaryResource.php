@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources;
 
+use App\BeneficiaryNeedStatusEnum;
 use App\Filament\Resources\BeneficiaryResource\Pages;
 use App\Filament\Resources\BeneficiaryResource\RelationManagers;
 use App\Models\Beneficiary;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -29,8 +31,10 @@ class BeneficiaryResource extends Resource
                 TextInput::make('name'),
                 TextInput::make('address'),
                 TextInput::make('phone_number'),
-                TextInput::make('support_need')
-
+                TextInput::make('support_need'),
+                Select::make('need_status')
+                    ->label('Status')
+                    ->options(BeneficiaryNeedStatusEnum::labels())
             ]);
     }
 
@@ -42,8 +46,8 @@ class BeneficiaryResource extends Resource
                 ->searchable(),
                 TextColumn::make('address'),
                 TextColumn::make('phone_number'),
-                TextColumn::make('support_need')
-
+                TextColumn::make('support_need'),
+                TextColumn::make('need_status'),
             ])
 
             ->filters([

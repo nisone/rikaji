@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Mail\NeedStatusUpdated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Mail;
 
 class Beneficiary extends Model
 {
@@ -29,4 +31,14 @@ class Beneficiary extends Model
  {
      return $this->belongsTo(User::class);
  }
+
+ protected static function booted(): void
+    {
+        static::updated(function($beneficiary) {
+            if($beneficiary->isDirty('need_status')){
+                Mail::to($beneficiary->user)->send(new NeedStatusUpdated());
+
+            }
+        });
+    }
 }
