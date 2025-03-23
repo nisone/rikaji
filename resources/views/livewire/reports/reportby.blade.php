@@ -106,7 +106,7 @@ new #[Layout('layouts.app')] class extends Component {
                 Saving...
             </div>
             <div wire:loading.remove>
-                Submit
+                Save
             </div>
         </div>
 

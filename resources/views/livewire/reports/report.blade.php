@@ -20,7 +20,7 @@ new class extends Component {
     {
         $id = auth()->user()->id;
         return [
-            'reports' => Report::search($this->search)->latest()->where('user_id', $id)->paginate(3),
+            'reports' => Report::search($this->search)->latest()->where('user_id', $id)->paginate(5),
         ];
     }
 }; ?>
@@ -50,4 +50,6 @@ new class extends Component {
         </div>
 
     </div>
+
+    <div>{{ $reports->links() }}</div>
 </div>
