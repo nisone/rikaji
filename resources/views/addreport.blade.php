@@ -6,7 +6,9 @@
         </x-slot>
 <div class="flex flex-col md:flex-row items-start justify-between max-w-7xl mx-auto">
 
+   <div>
     <livewire:reports.report />
+    </div>
 
     <div>
         <livewire:reports.add-report />

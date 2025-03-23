@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -24,5 +25,11 @@ class Report extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('title', 'like', '%' . $search . '%')
+            ->orWhere('description', 'like', '%' . $search . '%');
     }
 }

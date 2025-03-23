@@ -4,6 +4,8 @@ use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
 use App\Models\Beneficiary;
 use App\Models\User;
+use App\Mail\WelcomeBeneficiary;
+use Illuminate\Support\Facades\Mail;
 
 new class extends Component {
 
@@ -18,6 +20,10 @@ new class extends Component {
 
     #[Validate('required')]
     public $support_need;
+
+     #[Validate('required')]
+     public $email;
+
     public function createBeneficiary() {
         $this->validate();
 
@@ -38,8 +44,11 @@ new class extends Component {
             'address'=> $this->address,
             'phone_number'=> $this->phone_number,
             'support_need'=> $this->support_need,
+            'email'=> $this->email,
     ]);
+    Mail::to($this->email)->send(new WelcomeBeneficiary());
     }
+
 }; ?>
 
 <div class="m-4">
@@ -69,6 +78,11 @@ new class extends Component {
         <label for="support_need" class="text-bold text-gray-700">Support need</label>
         <input wire:model="support_need" id="support_need" placeholder="Support need" type="text" class="p-2 rounded">
         <div class="text-rose-500 text-xs">@error('support_need') {{ $message }} @enderror</div>
+    </div>
+    <div class="flex gap-2 flex-col mb-4">
+        <label for="email" class="text-bold text-gray-700">Email</label>
+        <input wire:model="email" id="email" placeholder="Email" type="text" class="p-2 rounded">
+        <div class="text-rose-500 text-xs">@error('email') {{ $message }} @enderror</div>
     </div>
 
 

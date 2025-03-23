@@ -22,7 +22,7 @@ class BeneficiaryResource extends Resource
 {
     protected static ?string $model = Beneficiary::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-user-circle';
 
     public static function form(Form $form): Form
     {
@@ -32,6 +32,7 @@ class BeneficiaryResource extends Resource
                 TextInput::make('address'),
                 TextInput::make('phone_number'),
                 TextInput::make('support_need'),
+                TextInput::make('email'),
                 Select::make('need_status')
                     ->label('Status')
                     ->options(BeneficiaryNeedStatusEnum::labels())
@@ -48,10 +49,16 @@ class BeneficiaryResource extends Resource
                 TextColumn::make('phone_number'),
                 TextColumn::make('support_need'),
                 TextColumn::make('need_status'),
+                TextColumn::make('email'),
             ])
 
             ->filters([
-                SelectFilter::make('name')
+                SelectFilter::make('need_status')
+                    ->options([
+                        BeneficiaryNeedStatusEnum::Pending->value => 'Pending',
+                        BeneficiaryNeedStatusEnum::Approved->value => 'Approved',
+                        BeneficiaryNeedStatusEnum::Rejected->value => 'Rejected',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
