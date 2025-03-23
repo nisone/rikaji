@@ -7,24 +7,20 @@ use Livewire\WithPagination;
 new class extends Component {
     use Withpagination;
     public $search = '';
-//     public $reports;
+    //     public $reports;
 
-//     public function mount() {
-//         $id = auth()->user()->id;
-//         $this->reports = Report::latest()
-//             ->where('user_id', $id)
-//             ->get();
-//     }
+    //     public function mount() {
+    //         $id = auth()->user()->id;
+    //         $this->reports = Report::latest()
+    //             ->where('user_id', $id)
+    //             ->get();
+    //     }
 
-
-public function with()
+    public function with()
     {
         $id = auth()->user()->id;
-        return  [
-            'reports' => Report::search($this->search)
-            ->latest()
-            ->where('user_id', $id)
-            ->paginate(3),
+        return [
+            'reports' => Report::search($this->search)->latest()->where('user_id', $id)->paginate(3),
         ];
     }
 }; ?>
@@ -32,7 +28,8 @@ public function with()
     <div>
         <div class="pt-6">
             <x-input-label for="search" :value="__('Search')" />
-            <x-text-input wire:model.live="search" id="search" class="block mt-1 w-full" type="search" name="search" required autofocus autocomplete="search" />
+            <x-text-input wire:model.live="search" id="search" class="block mt-1 w-full" type="search" name="search"
+                required autofocus autocomplete="search" />
             <x-input-error :messages="$errors->get('search')" class="mt-2" />
         </div>
     </div>
@@ -40,11 +37,16 @@ public function with()
     <div>
 
         <div class="flex flex-col mx-auto py-4">
-           @foreach ($reports as $r)
-            <div class="p-4 text-lg text-blue-500 hover:underline">
-               <a href={{route('reports.reportby', $r->id)}}> {{$r->title}}</a>
-            </div>
-        @endforeach
+            @foreach ($reports as $r)
+                <div class="p-4 text-lg ">
+                    <a class="text-blue-500 hover:underline" href={{ route('reports.reportby', $r->id) }}>
+                        {{ $r->title }}</a>
+                    <p class="text-sm text-gray-500 font-semibold">
+                        Reported by: {{ $r->user->name }} <br>
+                    </p>
+                    <span class="text-xs text-gray-500 font-semibold">{{ $r->created_at->diffForHumans() }}</span>
+                </div>
+            @endforeach
         </div>
 
     </div>
