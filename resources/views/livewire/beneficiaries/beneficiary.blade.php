@@ -39,8 +39,13 @@ new class extends Component {
 
     <div class="flex flex-col mx-auto py-4">
        @foreach ($beneficiaries as $b)
-        <div class="p-4 text-lg text-blue-500 hover:underline">
-           <a href={{route('beneficiaries.user', $b->id)}}> {{$b->name}}</a>
+        <div class="p-4  flex flex-col space-y-2">
+           <a class="text-lg text-blue-500 hover:underline" href={{route('beneficiaries.user', $b->id)}}> {{$b->name}}</a>
+           <p class="text-sm text-gray-500 font-semibold">
+            {{ $b->phone_number }} <br >
+            {{ $b->email }}
+           </p>
+            <span class="text-xs text-gray-500 font-semibold">{{$b->created_at->diffForHumans()}}</span>
         </div>
     @endforeach
     </div>

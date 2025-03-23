@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Admin::factory(1)->create(['email'=>'admin@example.com']);
+        // Admin::factory(1)->create(['email'=>'admin@example.com']);
         User::factory(10)->create();
         $this->call([
             ReportSeeder::class

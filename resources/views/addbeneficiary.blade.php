@@ -8,7 +8,7 @@
 
     <livewire:beneficiaries.beneficiary />
 
-    <div>
+    <div class="w-1/3">
         <livewire:beneficiaries.add-beneficiary />
     </div>
 </div>
