@@ -11,6 +11,14 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <div class="p-6">
+                    <div>
+                        @livewire(\App\Livewire\MyBeneficiaryStatsOverview::class)
+                    </div>
+                    <div>
+                        @livewire(\App\Livewire\MyReportStatsOverview::class)
+                    </div>
+                </div>
             </div>
         </div>
     </div>
