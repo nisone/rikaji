@@ -13,7 +13,10 @@ class AdminUserAnalytics extends BaseWidget
         $count = Admin::count();
 
         return [
-            Stat::make('Number of admins', $count),
+            Stat::make('Number of Admins', $count)
+            ->description('Total number of admin users')
+            ->descriptionIcon('heroicon-m-user')
+            ->color('success'),
         ];
     }
 }
