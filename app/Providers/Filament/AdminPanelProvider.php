@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\AdminResource\Widgets\AdminBarchat;
 use App\Filament\Resources\AdminResource\Widgets\AdminUserAnalytics;
 use App\Filament\Resources\BeneficiaryResource\Widgets\BeneficiaryStatsOverview;
 use App\Filament\Resources\BeneficiaryResource\Widgets\SupportNeedChart;
@@ -46,6 +47,7 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 AdminUserAnalytics::class,
+                AdminBarchat::class,
                 BeneficiaryStatsOverview::class,
                 ReportStatsOverview::class,
                 SupportNeedChart::class,
