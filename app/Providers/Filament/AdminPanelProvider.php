@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\AdminResource\Widgets\AdminUserAnalytics;
 use App\Filament\Resources\BeneficiaryResource\Widgets\BeneficiaryStatsOverview;
 use App\Filament\Resources\BeneficiaryResource\Widgets\SupportNeedChart;
 use App\Filament\Resources\ReportResource\Widgets\ReportStatsOverview;
@@ -44,6 +45,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
+                AdminUserAnalytics::class,
                 BeneficiaryStatsOverview::class,
                 ReportStatsOverview::class,
                 SupportNeedChart::class,

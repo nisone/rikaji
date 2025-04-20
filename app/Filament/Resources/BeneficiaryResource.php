@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\BeneficiaryNeedStatusEnum;
 use App\Filament\Resources\BeneficiaryResource\Pages;
 use App\Filament\Resources\BeneficiaryResource\RelationManagers;
+use App\Filament\Resources\BeneficiaryResource\Widgets\BeneficiaryStatsOverview;
 use App\Models\Beneficiary;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -73,7 +74,7 @@ class BeneficiaryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            
         ];
     }
 
